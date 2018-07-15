@@ -4,18 +4,8 @@ import styled from 'styled-components';
 
 // table
 import Table from '../components/Table';
-import Row from '../components/Row';
-import NestedRows from '../components/NestedRows';
-import NestedRow from '../components/NestedRow';
-import Cell from '../components/Cell';
-import HeaderCell from '../components/HeaderCell';
 
-// not table
-import Headline from '../components/Headline';
-import SubHeadline from '../components/SubHeadline';
-import TextList from '../components/TextList';
-
-// content
+// content components
 import HeaderRow from '../content/HeaderRow';
 import PlayerRow from '../content/PlayerRow';
 import DistributionRow from '../content/DistributionRow';
@@ -28,7 +18,7 @@ const propTypes = {
   plans: PropTypes.array,
 
   // TODO:
-  // support/allow parent component to control order and presence/absence of rows
+  // allow parent component to control order and presence/absence of specific content rows
   //rowConfiguration: PropTypes.object
 };
 
@@ -48,19 +38,13 @@ const PlansTable = ({plans}) => (
     <HeaderRow
       plans={plans}
     />
-    <PlayerRow
+    <PrivacyRow
       plans={plans}
     />
-    <PrivacyRow
+    <PlayerRow
       plans={plans}
     />
     <DistributionRow
-      plans={plans}
-    />
-    <PrivacyRow
-      plans={plans}
-    />
-    <PlayerRow
       plans={plans}
     />
   </Table>
