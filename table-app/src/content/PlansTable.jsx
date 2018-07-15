@@ -24,6 +24,25 @@ import PrivacyRow from '../content/PrivacyRow';
 // constants
 import { PLANS } from '../constants';
 
+const propTypes = {
+  plans: PropTypes.array,
+
+  // TODO:
+  // support/allow parent component to control order and presence/absence of rows
+  //rowConfiguration: PropTypes.object
+};
+
+// note: Parent component controls which plan types / columns are currently displayed
+// by the table
+const defaultProps = {
+  plans: [
+    PLANS.BASIC,
+    PLANS.PLUS,
+    PLANS.PRO,
+    PLANS.BUSINESS,
+  ],
+};
+
 const PlansTable = ({plans}) => (
   <Table>
     <HeaderRow
@@ -47,21 +66,7 @@ const PlansTable = ({plans}) => (
   </Table>
 );
 
-PlansTable.propTypes = {
-  plans: PropTypes.array,
-
-  // TODO:
-  // support/allow parent component to control order and presence/absence of rows
-  //rowConfiguration: PropTypes.object
-};
-
-PlansTable.defaultProps = {
-  plans: [
-    PLANS.BASIC,
-    PLANS.PLUS,
-    PLANS.PRO,
-    PLANS.BUSINESS,
-  ],
-};
+PlansTable.propTypes = propTypes;
+PlansTable.defaultProps = defaultProps;
 
 export default PlansTable;

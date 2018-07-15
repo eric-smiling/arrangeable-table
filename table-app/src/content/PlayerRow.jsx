@@ -13,6 +13,7 @@ import TextList from '../components/TextList';
 
 // DISCLAIMER: hardcoded content is repeated  here. 
 // See PrivacyRow.jsx for a sample, alternative implementation.
+// The alternative implementation is require in order to be able to add/drop plan columns via props.
 const PlayerRow = (props) => {
 
   return (

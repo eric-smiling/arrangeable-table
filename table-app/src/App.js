@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import Plans from './content/Plans'
+import PlansTable from './content/PlansTable'
 
 class App extends Component {
   render() {
     return (
-      <Plans />
+      <PlansTable />
     );
   }
 }
