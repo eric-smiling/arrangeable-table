@@ -1,9 +1,10 @@
 ### Goals
 - be able to rearrange rows with ease
 - support different row types (nested vs not)
-- be able to specific varying combinations of plans in different instance; only show columns for those plans
-- limit repeated content across components
-- super simple, repeatable jsx render sections that are easy to use to put together table rows and change out the content to wahtever we want.
+- be able to specify varying combinations of plans in different instances; only show the columns for chosen plans
+- maintain a super super simple, repeatable jsx render sections that are easy to use to put together table rows and change out the content to wahtever we want
+- little to no looping or logic needed to put together the table structure as a whole
+- use logic/iteration at the row level as a means to limit repeated content
 
 ### Sample Directories
 
