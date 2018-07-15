@@ -37,6 +37,7 @@ const Plans = (props) => {
         </Cell>
       </Row>
 
+
       <NestedRows
         header={
           <SubHeadline>Video Player</SubHeadline>
@@ -128,6 +129,7 @@ const Plans = (props) => {
         </NestedRow>
       </NestedRows>
 
+
       <Row>
         <HeaderCell>
           <SubHeadline>Privacy</SubHeadline>
@@ -172,6 +174,107 @@ const Plans = (props) => {
           />
         </Cell>
       </Row>
+
+
+      <NestedRows
+        header={
+          <SubHeadline>Distribution &amp; Marketing</SubHeadline>
+        }
+      >
+        <NestedRow>
+          <Cell>
+            <TextList
+              items={[
+                'Publish natively to Facebook, YouTube & Twitter'
+              ]}
+            />
+          </Cell>
+          <Cell>
+            <TextList
+              items={[
+                'Publish natively to Facebook, YouTube & Twitter'
+              ]}
+            />
+          </Cell>
+          <Cell>
+            <TextList
+              items={[
+                'Publish natively to Facebook, YouTube & Twitter'
+              ]}
+            />
+          </Cell>
+          <Cell>
+            <TextList
+              items={[
+                'Publish natively to Facebook, YouTube & Twitter'
+              ]}
+            />
+          </Cell>
+        </NestedRow>
+        <NestedRow>
+          <Cell>
+            <TextList
+              items={[
+                'Shareable video albums',
+                'Embeddable playlists',
+              ]}
+            />
+          </Cell>
+          <Cell>
+            <TextList
+              items={[
+                'Shareable video albums',
+                'Embeddable playlists',
+                'Portfolio sites with custom domains',
+              ]}
+            />
+          </Cell>
+          <Cell>
+            <TextList
+              items={[
+                'Shareable video albums',
+                'Embeddable playlists',
+                'Portfolio sites with custom domains',
+              ]}
+            />
+          </Cell>
+          <Cell>
+            <TextList
+              items={[
+                'Shareable video albums',
+                'Embeddable playlists',
+                'Portfolio sites with custom domains',
+              ]}
+            />
+          </Cell>
+        </NestedRow>
+        <NestedRow>
+          <Cell>
+            <em>Not Included</em>
+          </Cell>
+          <Cell>
+            <em>Not Included</em>
+          </Cell>
+          <Cell>
+            <TextList
+              items={[
+                'Custom cards & calls-to-action in the player',
+                'Collect email addresses in the player',
+                'Marketing software integrations',
+              ]}
+            />
+          </Cell>
+          <Cell>
+            <TextList
+              items={[
+                'Custom cards & calls-to-action in the player',
+                'Collect email addresses in the player',
+                'Marketing software integrations',
+              ]}
+            />
+          </Cell>
+        </NestedRow>
+      </NestedRows>
     </Table>
   );
 };
