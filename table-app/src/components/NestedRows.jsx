@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import HeaderCell from './HeaderCell';
+import TBody from './TBody';
 
 const NestedRows = ({children, header}) => {
 
@@ -26,10 +26,10 @@ const NestedRows = ({children, header}) => {
   );
 
   return (
-    <React.Fragment>
+    <TBody>
       {firstRowWithHeader}
       {rows}
-    </React.Fragment>
+    </TBody>
   );
 }
 
