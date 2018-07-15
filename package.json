@@ -1,0 +1,22 @@
+{
+  "name": "arrangeable-table",
+  "version": "1.0.0",
+  "description": "Arrangeable React table.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eric-smiling/arrangeable-table.git"
+  },
+  "author": "Eric Smiling",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eric-smiling/arrangeable-table/issues"
+  },
+  "homepage": "https://github.com/eric-smiling/arrangeable-table#readme",
+  "dependencies": {
+    "create-react-app": "^1.5.2"
+  }
+}
