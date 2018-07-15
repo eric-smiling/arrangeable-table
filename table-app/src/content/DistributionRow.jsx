@@ -11,6 +11,8 @@ import SubHeadline from '../components/SubHeadline';
 import TextList from '../components/TextList';
 
 
+// DISCLAIMER: hardcoded content is repeated  here. 
+// See PrivacyRow.jsx for a sample, alternative implementation.
 const DistributionRow = (props) => {
 
   return (
