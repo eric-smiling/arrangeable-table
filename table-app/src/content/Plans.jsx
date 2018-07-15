@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 // table
@@ -20,21 +21,47 @@ import PlayerRow from '../content/PlayerRow';
 import DistributionRow from '../content/DistributionRow';
 import PrivacyRow from '../content/PrivacyRow';
 
+// constants
+import { PLANS } from '../constants';
 
-const Plans = (props) => {
+const PlansTable = ({plans}) => (
+  <Table>
+    <HeaderRow
+      plans={plans}
+    />
+    <PlayerRow
+      plans={plans}
+    />
+    <PrivacyRow
+      plans={plans}
+    />
+    <DistributionRow
+      plans={plans}
+    />
+    <PrivacyRow
+      plans={plans}
+    />
+    <PlayerRow
+      plans={plans}
+    />
+  </Table>
+);
 
-  return (
-    <Table>
-      <HeaderRow />
-      <PlayerRow />
-      <PrivacyRow />
-      <DistributionRow />
-    </Table>
-  );
+PlansTable.propTypes = {
+  plans: PropTypes.array,
+
+  // TODO:
+  // support/allow parent component to control order and presence/absence of rows
+  //rowConfiguration: PropTypes.object
 };
 
-Plans.propTypes = {
-
+PlansTable.defaultProps = {
+  plans: [
+    PLANS.BASIC,
+    PLANS.PLUS,
+    PLANS.PRO,
+    PLANS.BUSINESS,
+  ],
 };
 
-export default Plans;
+export default PlansTable;

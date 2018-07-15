@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 // table
 import Row from '../components/Row';
@@ -9,25 +8,26 @@ import HeaderCell from '../components/HeaderCell';
 // not table
 import Headline from '../components/Headline';
 
+import {
+  PLANS,
+  PLAN_DISPLAY_NAMES,
+} from '../constants';
 
 
-const HeaderRow = (props) => (
+const HeaderRow = ({plans}) => (
   <Row>
     <HeaderCell>
       <Headline>Our plans</Headline>
     </HeaderCell>
-    <Cell>
-      <Headline>Plus</Headline>
-    </Cell>
-    <Cell>
-      <Headline>Pro</Headline>
-    </Cell>
-    <Cell>
-      <Headline>Business</Headline>
-    </Cell>
-    <Cell>
-      <Headline>Premium</Headline>
-    </Cell>
+    {
+      plans.map(plan => (
+        <Cell>
+          <Headline>
+            {PLAN_DISPLAY_NAMES[plan]}
+          </Headline>
+        </Cell>
+      ))
+    }
   </Row>
 );
 
