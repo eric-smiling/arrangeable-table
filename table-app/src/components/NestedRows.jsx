@@ -21,10 +21,7 @@ const NestedRows = ({children, header}) => {
 
   const firstRowWithHeader = React.cloneElement(
     firstRow,
-    {
-      isFirst:true,
-      ...firstRow.props,
-    },
+    firstRow.props,
     [headerCell].concat(React.Children.toArray(firstRow.props.children))
   );
 

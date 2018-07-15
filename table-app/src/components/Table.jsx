@@ -6,14 +6,9 @@ const Table = styled.table`
   width: 100%;
 `;
 
-const TableBody = styled.tbody`
-`;
-
 const TableComponent = ({children}) => (
   <Table>
-    <TableBody>
-      {children}
-    </TableBody>
+    {children}
   </Table>
 );
 
