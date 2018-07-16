@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
 
 // table
 import NestedRows from '../components/NestedRows';
@@ -10,113 +12,85 @@ import Cell from '../components/Cell';
 import SubHeadline from '../components/SubHeadline';
 import TextList from '../components/TextList';
 
+// content
+import UnavailableCell from './UnavailableCell';
 
-// DISCLAIMER: hardcoded content is repeated  here. 
-// See PrivacyRow.jsx for a sample, alternative implementation.
-// The alternative implementation is require in order to be able to add/drop plan columns via props.
-const DistributionRow = (props) => {
+// constants
+import { PLANS } from '../constants';
 
-  return (
-    <NestedRows
-      header={
-        <SubHeadline>Distribution &amp; Marketing</SubHeadline>
-      }
-    >
-      <NestedRow>
-        <Cell>
-          <TextList
-            items={[
-              'Publish natively to Facebook, YouTube & Twitter'
-            ]}
-          />
-        </Cell>
-        <Cell>
-          <TextList
-            items={[
-              'Publish natively to Facebook, YouTube & Twitter'
-            ]}
-          />
-        </Cell>
-        <Cell>
-          <TextList
-            items={[
-              'Publish natively to Facebook, YouTube & Twitter'
-            ]}
-          />
-        </Cell>
-        <Cell>
-          <TextList
-            items={[
-              'Publish natively to Facebook, YouTube & Twitter'
-            ]}
-          />
-        </Cell>
-      </NestedRow>
-      <NestedRow>
-        <Cell>
-          <TextList
-            items={[
-              'Shareable video albums',
-              'Embeddable playlists',
-            ]}
-          />
-        </Cell>
-        <Cell>
-          <TextList
-            items={[
-              'Shareable video albums',
-              'Embeddable playlists',
-              'Portfolio sites with custom domains',
-            ]}
-          />
-        </Cell>
-        <Cell>
-          <TextList
-            items={[
-              'Shareable video albums',
-              'Embeddable playlists',
-              'Portfolio sites with custom domains',
-            ]}
-          />
-        </Cell>
-        <Cell>
-          <TextList
-            items={[
-              'Shareable video albums',
-              'Embeddable playlists',
-              'Portfolio sites with custom domains',
-            ]}
-          />
-        </Cell>
-      </NestedRow>
-      <NestedRow>
-        <Cell>
-          <em>Not Included</em>
-        </Cell>
-        <Cell>
-          <em>Not Included</em>
-        </Cell>
-        <Cell>
-          <TextList
-            items={[
-              'Custom cards & calls-to-action in the player',
-              'Collect email addresses in the player',
-              'Marketing software integrations',
-            ]}
-          />
-        </Cell>
-        <Cell>
-          <TextList
-            items={[
-              'Custom cards & calls-to-action in the player',
-              'Collect email addresses in the player',
-              'Marketing software integrations',
-            ]}
-          />
-        </Cell>
-      </NestedRow>
-    </NestedRows>
-  );
+const propTypes = {
+  // currently displayed plans
+  plans: PropTypes.array,
+
+  // content for each plan
+  listsByPlan: PropTypes.object,
 };
+
+const defaultProps = {
+
+  // selectively override DEFAULT values by adding entries for specific plan types
+  // to mark as "not available" for a plan, set value for plan to []
+  // parent components can also completely override
+  listsByPlan: [
+    {
+      DEFAULT: [
+        'Publish natively to Facebook, YouTube & Twitter',
+      ],
+    },
+    {
+      DEFAULT: [
+        'Shareable video albums',
+        'Embeddable playlists',
+        'Portfolio sites with custom domains',
+      ],
+      [PLANS.BASIC]: [
+        'Shareable video albums',
+        'Embeddable playlists',
+      ]
+    },
+    {
+      DEFAULT: [
+        'Custom cards & calls-to-action in the player',
+        'Collect email addresses in the player',
+        'Marketing software integrations',
+      ],
+      [PLANS.BASIC]: [],
+      [PLANS.PLUS]: [],
+    },
+  ],
+};
+
+const DistributionRow = ({plans, listsByPlan}) => (
+  <NestedRows
+    header={
+      <SubHeadline>Distribution &amp; Marketing</SubHeadline>
+    }
+  >
+    {
+      listsByPlan.map(itemsByPlan => (
+        <NestedRow>
+          {plans.map(plan => {
+            const items = itemsByPlan[plan] || itemsByPlan.DEFAULT;
+            if (items.length) {
+              return (
+                <Cell>
+                  <TextList
+                    items={items}
+                  />
+                </Cell>
+              );
+            }
+            return (
+              <UnavailableCell />
+            );
+          })}
+        </NestedRow>
+      ))
+    }
+  </NestedRows>
+);
+
+DistributionRow.propTypes = propTypes;
+DistributionRow.defaultProps = defaultProps;
 
 export default DistributionRow;
