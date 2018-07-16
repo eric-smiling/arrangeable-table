@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 // table
 import NestedRows from '../components/NestedRows';
@@ -10,11 +10,52 @@ import Cell from '../components/Cell';
 import SubHeadline from '../components/SubHeadline';
 import TextList from '../components/TextList';
 
+// content
+import UnavailableCell from './UnavailableCell';
 
-// DISCLAIMER: hardcoded content is repeated  here. 
-// See PrivacyRow.jsx for a sample, alternative implementation.
-// The alternative implementation is require in order to be able to add/drop plan columns via props.
-const PlayerRow = (props) => {
+// constants
+import { PLANS } from '../constants';
+
+
+const propTypes = {
+  // currently displayed plans
+  plans: PropTypes.array,
+
+  // content for each plan
+  listsByPlan: PropTypes.object,
+};
+
+const defaultProps = {
+
+  // selectively override DEFAULT values by adding entries for specific plan types
+  // to mark as "not available" for a plan, set value for plan to []
+  // parent components can also completely override
+  listsByPlan: [
+    {
+      DEFAULT: [
+        'Unlimited bandwidth in the Vimeo player',
+        '4K & HDR support',
+        'No ads before, after, or on your video',
+      ],
+    },
+    {
+      DEFAULT: [
+        'Embed anywhere',
+        'Customize colors & components',
+        'Customize end-screens',
+        'Add your logo',
+        'Playback speed control',
+        'Third-party player support',
+      ],
+      [PLANS.PLUS]: [
+        'Customize video player',
+        'Custom end screens',
+      ],
+    },
+  ],
+};
+
+const PlayerRow = ({plans, listsByPlan}) => {
 
   return (
       <NestedRows
@@ -22,92 +63,32 @@ const PlayerRow = (props) => {
           <SubHeadline>Video Player</SubHeadline>
         }
       >
-        <NestedRow>
-          <Cell>
-            <TextList
-              items={[
-                'Unlimited bandwidth in the Vimeo player',
-                '4K & HDR support',
-                'No ads before, after, or on your video',
-              ]}
-            />
-          </Cell>
-          <Cell>
-            <TextList
-              items={[
-                'Unlimited bandwidth in the Vimeo player',
-                '4K & HDR support',
-                'No ads before, after, or on your video',
-              ]}
-            />
-          </Cell>
-          <Cell>
-            <TextList
-              items={[
-                'Unlimited bandwidth in the Vimeo player',
-                '4K & HDR support',
-                'No ads before, after, or on your video',
-              ]}
-            />
-          </Cell>
-          <Cell>
-            <TextList
-              items={[
-                'Unlimited bandwidth in the Vimeo player',
-                '4K & HDR support',
-                'No ads before, after, or on your video',
-              ]}
-            />
-          </Cell>
-        </NestedRow>
-        <NestedRow>
-          <Cell>
-            <TextList
-              items={[
-                'Customize video player',
-                'Custom end screens',
-              ]}
-            />
-          </Cell>
-          <Cell>
-            <TextList
-              items={[
-                'Embed anywhere',
-                'Customize colors & components',
-                'Customize end-screens',
-                'Add your logo',
-                'Playback speed control',
-                'Third-party player support',
-              ]}
-            />
-          </Cell>
-          <Cell>
-            <TextList
-              items={[
-                'Embed anywhere',
-                'Customize colors & components',
-                'Customize end-screens',
-                'Add your logo',
-                'Playback speed control',
-                'Third-party player support',
-              ]}
-            />
-          </Cell>
-          <Cell>
-            <TextList
-              items={[
-                'Embed anywhere',
-                'Customize colors & components',
-                'Customize end-screens',
-                'Add your logo',
-                'Playback speed control',
-                'Third-party player support',
-              ]}
-            />
-          </Cell>
-        </NestedRow>
+        {
+          listsByPlan.map(itemsByPlan => (
+            <NestedRow>
+              {plans.map(plan => {
+                const items = itemsByPlan[plan] || itemsByPlan.DEFAULT;
+                if (items.length) {
+                  return (
+                    <Cell>
+                      <TextList
+                        items={items}
+                      />
+                    </Cell>
+                  );
+                }
+                return (
+                  <UnavailableCell />
+                );
+              })}
+            </NestedRow>
+          ))
+        }
       </NestedRows>
   );
 };
+
+PlayerRow.propTypes = propTypes;
+PlayerRow.defaultProps = defaultProps;
 
 export default PlayerRow;

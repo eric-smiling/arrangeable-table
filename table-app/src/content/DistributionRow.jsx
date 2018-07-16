@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
 
 // table
 import NestedRows from '../components/NestedRows';
@@ -43,7 +41,7 @@ const defaultProps = {
         'Embeddable playlists',
         'Portfolio sites with custom domains',
       ],
-      [PLANS.BASIC]: [
+      [PLANS.PLUS]: [
         'Shareable video albums',
         'Embeddable playlists',
       ]
@@ -56,6 +54,7 @@ const defaultProps = {
       ],
       [PLANS.BASIC]: [],
       [PLANS.PLUS]: [],
+      [PLANS.PRO]: [],
     },
   ],
 };

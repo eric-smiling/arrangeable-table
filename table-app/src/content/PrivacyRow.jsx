@@ -37,7 +37,7 @@ const defaultProps = {
       'Private link sharing',
       'Private team projects',
     ],
-    [PLANS.BASIC]: [
+    [PLANS.PLUS]: [
       'Password protection',
       'Domain-level privacy',
       'Private link sharing',
@@ -65,7 +65,7 @@ const PrivacyRow = ({plans, itemsByPlan}) => {
                   items={items}
                 />
               </Cell>
-            );          
+            );
           }
 
           return (

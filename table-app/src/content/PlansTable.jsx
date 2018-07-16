@@ -26,10 +26,10 @@ const propTypes = {
 // by the table
 const defaultProps = {
   plans: [
-    PLANS.BASIC,
     PLANS.PLUS,
     PLANS.PRO,
     PLANS.BUSINESS,
+    PLANS.PREMIUM,
   ],
 };
 
@@ -38,10 +38,10 @@ const PlansTable = ({plans}) => (
     <HeaderRow
       plans={plans}
     />
-    <PrivacyRow
+    <PlayerRow
       plans={plans}
     />
-    <PlayerRow
+    <PrivacyRow
       plans={plans}
     />
     <DistributionRow

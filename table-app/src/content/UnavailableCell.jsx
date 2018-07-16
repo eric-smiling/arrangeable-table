@@ -5,7 +5,7 @@ import Cell from '../components/Cell';
 
 const UnavailableCell = () => (
   <Cell>
-    <em>Not Available</em>
+    <em>Not included</em>
   </Cell>
 );
 
